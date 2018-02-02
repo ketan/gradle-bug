@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+
+
+dependencies {
+  compile localGroovy()
+}
+
+  tasks.withType(GroovyCompile) { compileTask ->
+    options.warnings = false
+    options.encoding = "UTF-8"
+    options.compilerArgs += ['-Xlint:-deprecation']
+
+    groovyOptions.configurationScript = rootProject.file('groovycConfig.groovy')
+    groovyOptions.encoding = "UTF-8"
+  }
